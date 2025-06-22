@@ -63,7 +63,7 @@ int main()
 
     // ram_test();
 
-    conv_test();
+    conv_test_multiple_units();
 
 //    ddr_test();
 
