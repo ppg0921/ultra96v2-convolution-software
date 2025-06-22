@@ -5,13 +5,13 @@
 
 #define CONV_BASE_ADDR      0xA0000000
 #define INPUT_ADDR_OFFSET   0x00
-#define WEIGHT_ADDR_OFFSET  0xFC
+#define WEIGHT_ADDR_OFFSET  0x1F8
 #define CLEAR_ADDR_OFFSET   0xFFF4
 #define START_ADDR_OFFSET   0xFFF8
 #define DONE_ADDR_OFFSET    0xFFFC
-#define RESULT_ADDR_OFFSET  0x0104  // start of result region
+#define RESULT_ADDR_OFFSET  0x0200  // start of result region
 
-#define NUM_UNITS 56
+#define NUM_UNITS 112
 #define INPUT_SIZE_PER_UNIT 9
 
 // Macro for 32-bit word access
