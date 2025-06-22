@@ -21,6 +21,7 @@
 void conv_set_weights(const uint8_t *weights, uint32_t num_weights);
 void conv_set_inputs(const uint8_t *inputs, uint32_t num_inputs);
 void conv_start();
+void conv_clear();
 void conv_wait_done();
 uint32_t conv_get_result(uint32_t unit_index);
 void conv_test_multiple_units();

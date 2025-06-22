@@ -35,6 +35,10 @@ void conv_wait_done() {
     while (CONV_WORD(DONE_ADDR_OFFSET) == 0);
 }
 
+void conv_clear() {
+    CONV_WORD(CLEAR_ADDR_OFFSET) = 1;
+}
+
 uint32_t conv_get_result(uint32_t unit_index) {
     return CONV_WORD(RESULT_ADDR_OFFSET + 4 * unit_index);
 }
@@ -62,10 +66,16 @@ void conv_test_multiple_units() {
     conv_start();
     conv_wait_done();
 
+    conv_clear();
+    xil_printf("Convolution cleared. Starting again...\n");
+
+    conv_start();
+    conv_wait_done();
+
     xil_printf("Convolution done. Reading results:\n");
 
     for (uint32_t i = 0; i < NUM_UNITS; ++i) {
         uint32_t result = conv_get_result(i);
-        xil_printf("Result[%2d] = 0x%08X\n", i, result);
+        xil_printf("Result[%2d] = 0x%d\n", i, result);
     }
 }
