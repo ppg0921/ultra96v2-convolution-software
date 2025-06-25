@@ -4,8 +4,9 @@
 #include <stdint.h>
 
 #define CONV_BASE_ADDR      0xA0000000
-#define INPUT_ADDR_OFFSET   0x00
-#define WEIGHT_ADDR_OFFSET  0x1F8
+#define INPUT1_ADDR_OFFSET   0x00
+#define INPUT2_ADDR_OFFSET   0x240 
+#define WEIGHT_ADDR_OFFSET  0x120 //  64 x 3 x 3  = 576 inputs , 1 word = 8 input => 72 words = 288 bytes
 #define CLEAR_ADDR_OFFSET   0xFFF4
 #define START_ADDR_OFFSET   0xFFF8
 #define DONE_ADDR_OFFSET    0xFFFC
@@ -13,6 +14,11 @@
 
 #define NUM_UNITS 112
 #define INPUT_SIZE_PER_UNIT 9
+
+#define IN_CHANNELS 64
+#define OUT_CHANNELS 64 
+#define OUTPUT_SIZE 112*112
+#define INPUT_SIZE (112+2)*(112+2)
 
 // Macro for 32-bit word access
 #define CONV_WORD(offset) (*(volatile uint32_t *)(CONV_BASE_ADDR + (offset)))
